@@ -75,9 +75,14 @@ namespace DataAccesLayer.Migrations
                     b.Property<Guid>("CategoryID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("WriterID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("BlogID");
 
                     b.HasIndex("CategoryID");
+
+                    b.HasIndex("WriterID");
 
                     b.ToTable("Blogs");
                 });
@@ -162,6 +167,23 @@ namespace DataAccesLayer.Migrations
                     b.ToTable("Contacts");
                 });
 
+            modelBuilder.Entity("EntitiyLayer.Concrete.NewsLetter", b =>
+                {
+                    b.Property<Guid>("MailId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Mail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("MailStatus")
+                        .HasColumnType("bit");
+
+                    b.HasKey("MailId");
+
+                    b.ToTable("NewsLetters");
+                });
+
             modelBuilder.Entity("EntitiyLayer.Concrete.Writer", b =>
                 {
                     b.Property<Guid>("WriterID")
@@ -183,6 +205,9 @@ namespace DataAccesLayer.Migrations
                     b.Property<bool>("WriterStatus")
                         .HasColumnType("bit");
 
+                    b.Property<string>("WriterSurname")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Writerpassword")
                         .HasColumnType("nvarchar(max)");
 
@@ -199,13 +224,19 @@ namespace DataAccesLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EntitiyLayer.Concrete.Writer", "Writer")
+                        .WithMany("Blogs")
+                        .HasForeignKey("WriterID");
+
                     b.Navigation("Category");
+
+                    b.Navigation("Writer");
                 });
 
             modelBuilder.Entity("EntitiyLayer.Concrete.Comment", b =>
                 {
                     b.HasOne("EntitiyLayer.Concrete.Blog", "Blog")
-                        .WithMany("Commnets")
+                        .WithMany("Comments")
                         .HasForeignKey("BlogID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -215,10 +246,15 @@ namespace DataAccesLayer.Migrations
 
             modelBuilder.Entity("EntitiyLayer.Concrete.Blog", b =>
                 {
-                    b.Navigation("Commnets");
+                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("EntitiyLayer.Concrete.Category", b =>
+                {
+                    b.Navigation("Blogs");
+                });
+
+            modelBuilder.Entity("EntitiyLayer.Concrete.Writer", b =>
                 {
                     b.Navigation("Blogs");
                 });

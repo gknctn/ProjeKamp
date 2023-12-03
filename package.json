@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "jquery-ajax": "^2.1.4",
+    "sweetalert2": "^11.10.1"
+  }
+}

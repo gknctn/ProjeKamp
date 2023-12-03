@@ -12,7 +12,7 @@ namespace BusinessLayer.Abstract
         void CategoryAdd(Category category);
         void CategoryRemove(Category category);
         void CategoryUpdate(Category category);
-        List<Category> GetAllCategories();
+        List<Category> GetList();
         Category GetCategory(Guid id);
 
     }

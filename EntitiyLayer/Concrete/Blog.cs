@@ -17,6 +17,8 @@ namespace EntitiyLayer.Concrete
         public bool BlogStatus { get; set; }
         public Guid CategoryID { get; set; }
         public Category Category { get; set; }
-        public List<Comment> Commnets { get; set; }
+		public Guid? WriterID { get; set; }
+		public Writer Writer{ get; set; }
+		public List<Comment> Comments { get; set; }
     }
 }

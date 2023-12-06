@@ -10,8 +10,10 @@ namespace Webproject.ViewComponents.Blog
 		BlogManager blogManager=new BlogManager(new EfBlogRepository());
 		public IViewComponentResult Invoke()
 		{
+			
 			//var values = blogManager.GetBlogListByWriter("");
-			return View();
+			var values = blogManager.GetAllBlogs();
+			return View(values);
 		}
 	}
 }

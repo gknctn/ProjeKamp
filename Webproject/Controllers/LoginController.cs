@@ -3,6 +3,7 @@ using EntitiyLayer.Concrete;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,12 +36,17 @@ namespace Webproject.Controllers
 				ClaimsPrincipal principal = new ClaimsPrincipal(useidentitiy);
 				await HttpContext.SignInAsync(principal);
 
-				return RedirectToAction("Index", "Writer");
+				return RedirectToAction("Index", "Dashboard");
 			}
 			else
 			{
 				return View();
 			}
+		}
+		public async Task<IActionResult> Logout() 
+		{
+            await HttpContext.SignOutAsync();
+			return RedirectToAction("Index","Blog");
 		}
 	}
 }

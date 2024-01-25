@@ -20,9 +20,34 @@ namespace BusinessLayer.Concrete
             _commentdal.Insert(comment);
         }
 
-        public List<Comment> GetListAll(Guid id)
+        public List<Comment> GetListAll(int id)
         {
             return _commentdal.GetListAll(x => x.BlogID == id);
+        }
+
+        public void TAdd(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TDelete(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Blog TGetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Blog> TGetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(Blog t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

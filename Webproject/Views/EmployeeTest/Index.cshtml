@@ -1,0 +1,26 @@
+﻿@using Webproject.Controllers
+@model List<class1>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Isim</th>
+        <th>Duzenle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.id</td>
+            <td>@item.Name</td>
+            <td><a href="/EmployeeTest/EditEmployee/@item.id" class="btn btn-outline-warning">Duzenle</a></td>
+            <td><a href="/EmployeeTest/DeleteEmployee/@item.id" class="btn btn-outline-danger">Sil</a></td>
+        </tr>
+    }
+</table>
+<a href="/EmployeeTest/AddEmployee/">Ekle</a>
+

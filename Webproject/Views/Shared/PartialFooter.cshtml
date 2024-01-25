@@ -4,35 +4,15 @@
         <div class="row">
             <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
                 <h3>Hakkımızda</h3>
-                <p>Kabul edelim ki, zaman zaman teknolojiyi hayatımızdan çıkarma ya da hayatımızdaki etkisini azaltmaya çabalasak da, hepimiz günlük hayatımızda teknolojiyi kullanmaktan memnunuz. Çünkü gerçekten  teknolojinin günlük işleri kolaylaştırdığını ve kendimize daha fazla zaman kaldığını düşünüyoruz. Peki, hayatımızı kolaylaştıran bu teknolojilerin neler olduğunu biliyor muyuz?Bu sorudan yola çıktım ve...</p>
+                <p>İleri teknikleri ve son teknolojileri kullanarak, Ar-Ge çalışmalarımızı sürekli arttırarak; dünya pazarlarında kabul gören en yüksek standartlara sahip kaliteli ürünlerimizle uluslar arası bir marka olmak ve satış sonrası hizmetlerde hemen ulaşılabilirlik avantajımızla sürekli yenilikçi çözümler üretmektir.35 yılı aşan geçmişimizde oluşturduğumuz kurumsal değerlerimizi koruyup yeni yüzyılın rekabet ortamında...</p>
                 <div class="read">
                     <a class="btn btn-primary read-m" asp-action="Index"asp-controller="About">Devamını oku</a>
                 </div>
             </div>
             <div class="col-lg-4 footer-grid-agileits-w3ls text-left">
 
-                <div class="tech-btm">
-                    <h3>Latest Posts</h3>
-                    <div class="blog-grids row mb-3">
-                        <div class="col-md-5 blog-grid-left">
-                            <a href="single.html">
-                                <img src="~/CoreBlogTema/images/4.jpg" class="card-img-top img-fluid" alt="">
-                            </a>
-                        </div>
-                        <div class="col-md-7 blog-grid-right">
+                @await Component.InvokeAsync("BlogLast3Post");
 
-                            <h5>
-                                <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
-                            </h5>
-                            <div class="sub-meta">
-                                <span>
-                                    <i class="far fa-clock"></i> 20 Jan, 2018
-                                </span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
             <!-- subscribe -->
             <div class="col-lg-4 subscribe-main footer-grid-agileits-w3ls text-left">

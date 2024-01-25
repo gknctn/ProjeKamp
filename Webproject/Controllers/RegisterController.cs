@@ -25,7 +25,7 @@ namespace Webproject.Controllers
             {
                 p.WriterStatus = true;
                 p.WriterAbout = "Bu deneme içeriğidir";
-                writerManager.WriterAdd(p);
+                writerManager.TAdd(p);
 
                 return RedirectToAction("index", "Blog");
             }

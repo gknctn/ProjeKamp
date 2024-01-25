@@ -1,0 +1,18 @@
+﻿@using Webproject.Controllers
+@model class1
+@{
+    ViewData["Title"] = "EditEmployee";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>EditEmployee</h1>
+
+<form method="post">
+    <label>Calisan Id</label>
+    @Html.TextBoxFor(x => x.id, new { @class = "form-control" })
+    <br />
+
+    <label>Ad Soyad</label>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <button class="btn btn-success">Guncelle</button>
+</form>

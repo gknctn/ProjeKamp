@@ -10,7 +10,7 @@ namespace EntitiyLayer.Concrete
     public class NewsLetter
     {
         [Key]
-        public Guid MailId{ get; set; }
+        public int MailId { get; set; }
         public string Mail { get; set; }
         public bool MailStatus { get; set; }
     }

@@ -1,0 +1,22 @@
+﻿@model EntitiyLayer.Concrete.Category
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Kategori ekle</h1>
+
+@using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
+{
+    @Html.Label("Kategori adi")
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryName)
+    <br />
+    @Html.Label("Kategori aciklama")
+    @Html.TextAreaFor(x => x.CategoryDescription, 3, 10, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryDescription)
+    <br />
+    <button class="btn btn-info">
+        Kategori Kaydet
+    </button>
+}

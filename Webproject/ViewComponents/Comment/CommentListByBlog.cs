@@ -8,7 +8,7 @@ namespace Webproject.ViewComponents.Comment
     public class CommentListByBlog:ViewComponent
     {
         CommentManager commentManager = new CommentManager(new EfCommentRepository());
-        public IViewComponentResult Invoke(Guid id)
+        public IViewComponentResult Invoke(int id)
         {
             var values = commentManager.GetListAll(id);
             return View(values);

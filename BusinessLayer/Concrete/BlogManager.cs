@@ -16,44 +16,52 @@ namespace BusinessLayer.Concrete
 		{
 			_blogDal = blogDal;
 		}
-		public void BlogAdd(Blog blog)
-		{
-			throw new NotImplementedException();
-		}
+        public List<Blog> GetBlogListWithCategory()
+        {
+            return _blogDal.GetWithCategory();
+        }
 
-		public void BlogRemove(Blog blog)
-		{
-			throw new NotImplementedException();
-		}
+        public List<Blog> GetBlogListByWriter(int id)
+        {
+            return _blogDal.GetListAll(x => x.WriterID == id);
 
-		public void BlogUpdate(Blog blog)
-		{
-			throw new NotImplementedException();
-		}
-		public List<Blog> GetBlogByID(Guid id)
-		{
-			return _blogDal.GetListAll(x => x.BlogID == id);
-		}
+        }
+        public List<Blog> GetLast3Blog()
+        {
+            return _blogDal.GetListAll().Take(3).ToList();
+        }
+        public List<Blog> GetBlogByID(int id)
+        {
+            return _blogDal.GetListAll(x => x.BlogID == id);
+        }
+        public List<Blog> GetListWithCategoryByWriter(int id)
+        {
+            return _blogDal.GetListWithCategoryByWriter(id);
+        }
+        public void TAdd(Blog t)
+        {
+            _blogDal.Insert(t);
+        }
 
-		public List<Blog> GetAllBlogs()
-		{
-			return _blogDal.GetListAll();
-		}
+        public void TDelete(Blog t)
+        {
+            _blogDal.Delete(t);
+        }
 
-		public Blog GetBlog(Guid id)
-		{
-			return _blogDal.getById(id);
-		}
+        public void TUpdate(Blog t)
+        {
+            _blogDal.Update(t);
+        }
 
-		public List<Blog> GetBlogListWithCategory()
-		{
-			return _blogDal.GetWithCategory();
-		}
 
-		public List<Blog> GetBlogListByWriter(Guid id)
-		{
-			return _blogDal.GetListAll(x=>x.WriterID==id) ;
+        public List<Blog> TGetList()
+        {
+            return _blogDal.GetListAll();
+        }
 
-		}
-	}
+        public Blog TGetById(int id)
+        {
+            return _blogDal.getById(id);
+        }
+    }
 }

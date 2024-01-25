@@ -1,9 +1,11 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccesLayer.EntityFramework;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Webproject.Controllers
 {
+    [AllowAnonymous]
     public class AboutController : Controller
     {
         AboutManager aboutManager = new AboutManager(new EfAboutRepository());

@@ -1,0 +1,42 @@
+﻿@using EntitiyLayer.Concrete
+@model List<Blog>
+@{
+    ViewData["Title"] = "BlogListByWriter";
+    Layout = "~/Views/Shared/WriterLayot.cshtml";
+}
+
+<h1>Yazarin Bloglari</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Blog Basligi</th>
+        <th>Olusturulma tarihi</th>
+        <th>Kategori</th>
+        <th>Durum</th>
+        <th>Sil</th>
+        <th>Guncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BlogID</td>
+            <td>@item.BlogName</td>
+            <td>@item.BlogCreateDate</td>
+            <td>@item.Category.CategoryName</td>
+            <th><a href="/Blog/DeleteBlog/@item.BlogID" class="btn btn-danger">Sil</a></th>
+            <th><a href="/Blog/EditBlog/@item.BlogID" class="btn btn-info">Guncelle</a></th>
+
+            @if (item.BlogStatus == true)
+            {
+                <td>Aktif</td>
+            }
+            else
+            {
+                <td>Pasif</td>
+            }
+
+        </tr>
+    }
+</table>
+<a href="/Blog/BlogAdd/" class="btn btn-primary">Yeni Blog Olustur</a>
+

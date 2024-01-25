@@ -1,5 +1,6 @@
 ﻿using DataAccesLayer.Abstract;
 using DataAccesLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace DataAccesLayer.Repositories
             context.SaveChanges();
         }
 
-        public T getById(Guid id)
+        public T getById(int id)
         {
             return context.Set<T>().Find(id);
 
@@ -45,7 +46,7 @@ namespace DataAccesLayer.Repositories
         public void Update(T t)
         {
             context.Update(t);
-            context = new Context();
+            context.SaveChanges();
         }
     }
 }

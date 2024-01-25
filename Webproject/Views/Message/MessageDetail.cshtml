@@ -1,0 +1,22 @@
+﻿@model EntitiyLayer.Concrete.Message2
+@{
+    ViewData["Title"] = "MessageDetail";
+    Layout = "~/Views/Shared/WriterLayot.cshtml";
+}
+
+<h1>
+    Mesaj detay sayfasi
+</h1>
+@Html.Label("Mesaj ID")
+@Html.TextBoxFor(x => x.MessageID, new { @class = "form-control" })
+
+@Html.Label("Mesaj Basligi")
+@Html.TextBoxFor(x => x.MessageSubject, new { @class = "form-control" })
+
+@Html.Label("Mesaj Tarihi")
+@Html.TextBoxFor(x => x.MessageDate, new { @class = "form-control" })
+
+@Html.Label("Mesaj")
+@Html.TextAreaFor(x => x.MessageDetail,10,3, new { @class = "form-control" })
+<br />
+<a class="btn btn-success"asp-action="Inbox" asp-controller="Message">Mesajlara don</a>

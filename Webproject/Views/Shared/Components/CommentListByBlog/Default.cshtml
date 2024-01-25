@@ -22,8 +22,13 @@
                     <p>
                         @item.CommentContent
                     </p>
+
                 </div>
+                <p>
+                    @item.CommentDate.ToString("MM/dd/yyyy HH:mm")
+                </p>
             </div>
+            <br />
         }
     }
 </div>

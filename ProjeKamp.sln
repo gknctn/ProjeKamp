@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CoreLayer\Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webproject", "Webproject\Webproject.csproj", "{3F0DF084-1874-4E2C-8513-4DC1B2EC8C94}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApi", "BlogApi\BlogApi.csproj", "{23B7CAAC-1B01-4D2D-B1E1-5C6D636330F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,14 @@ Global
 		{3F0DF084-1874-4E2C-8513-4DC1B2EC8C94}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3F0DF084-1874-4E2C-8513-4DC1B2EC8C94}.Release|x64.ActiveCfg = Release|x64
 		{3F0DF084-1874-4E2C-8513-4DC1B2EC8C94}.Release|x64.Build.0 = Release|x64
+		{23B7CAAC-1B01-4D2D-B1E1-5C6D636330F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B7CAAC-1B01-4D2D-B1E1-5C6D636330F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B7CAAC-1B01-4D2D-B1E1-5C6D636330F9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{23B7CAAC-1B01-4D2D-B1E1-5C6D636330F9}.Debug|x64.Build.0 = Debug|Any CPU
+		{23B7CAAC-1B01-4D2D-B1E1-5C6D636330F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B7CAAC-1B01-4D2D-B1E1-5C6D636330F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B7CAAC-1B01-4D2D-B1E1-5C6D636330F9}.Release|x64.ActiveCfg = Release|Any CPU
+		{23B7CAAC-1B01-4D2D-B1E1-5C6D636330F9}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

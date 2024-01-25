@@ -19,7 +19,7 @@ namespace Webproject.Controllers
         {
             c.ContactDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             c.ContactStatus = true;
-            contactManager.Add(c);
+            contactManager.TAdd(c);
             return RedirectToAction("Index","Blog");
         }
     }

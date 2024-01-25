@@ -8,7 +8,7 @@ namespace EntitiyLayer.Concrete
 {
     public class Contact
     {
-        public Guid ContactID{ get; set; }
+        public int ContactID { get; set; }
         public string ContactUserName{ get; set; }
         public string ContactMail { get; set; }
         public string ContactSubject{ get; set; }

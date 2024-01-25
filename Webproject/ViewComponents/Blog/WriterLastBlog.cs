@@ -12,7 +12,7 @@ namespace Webproject.ViewComponents.Blog
 		{
 			
 			//var values = blogManager.GetBlogListByWriter("");
-			var values = blogManager.GetAllBlogs();
+			var values = blogManager.TGetList();
 			return View(values);
 		}
 	}

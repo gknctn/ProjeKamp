@@ -1,0 +1,28 @@
+﻿@model EntitiyLayer.Concrete.Message2
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/WriterLayot.cshtml";
+}
+
+<h1> Mesaj Gonder </h1>
+<br />
+@using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
+{
+    @Html.Label("Alici maili")
+    @Html.TextBoxFor(x => x.MessageReceiverID, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Konu")
+    @Html.TextBoxFor(x => x.MessageSubject, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.MessageSubject)
+    <br />
+    
+    @Html.Label("Mesaj")
+    @Html.TextAreaFor(x => x.MessageDetail,3,10, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.MessageDetail)
+    <br />
+    <button class="btn btn-info">
+        Blogu Kaydet
+    </button>
+}
+

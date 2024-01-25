@@ -1,0 +1,66 @@
+﻿@model UserSignInViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WebBlog| Giris yap</title>
+
+    <link href="~/inspinia-gh-pages/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/inspinia-gh-pages/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="~/inspinia-gh-pages/css/animate.css" rel="stylesheet">
+    <link href="~/inspinia-gh-pages/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">IN+</h1>
+
+            </div>
+            <h3>Blogumuza Hosgeldiniz</h3>
+            <p>
+                Blogumuzda bulunan yuzlerce bloga erismek icin giris yapiniz.
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+            </p>
+            <p>Giris yap</p>
+            <form class="m-t" method="post">
+                <div class="form-group"> 
+                    <input type="text" class="form-control" asp-for="@Model.UserName" placeholder="Kullanici adi" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" asp-for="@Model.Password" class="form-control" placeholder="Sifre" required="">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+                <a href="#"><small>Sifremi unuttum.</small></a>
+                <p class="text-muted text-center"><small>Hesabiniz var mi?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="/RegisterUser/Index/">Kayit ol</a>
+            </form>
+            <p class="m-t"> <small>Asp.Net Core Proje; @DateTime.UtcNow</small> </p>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="~/inspinia-gh-pages/js/jquery-3.1.1.min.js"></script>
+    <script src="~/inspinia-gh-pages/js/popper.min.js"></script>
+    <script src="~/inspinia-gh-pages/js/bootstrap.js"></script>
+
+</body>
+
+</html>

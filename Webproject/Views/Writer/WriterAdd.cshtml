@@ -1,0 +1,42 @@
+﻿@model Webproject.Models.AddProfileImage
+
+@{
+    ViewData["Title"] = "WriterAdd";
+    Layout = "~/Views/Shared/WriterLayot.cshtml";
+}
+<form class="form-group" method="post" enctype="multipart/form-data">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yazar ekleme</h4>
+                @Html.HiddenFor(x => x.WriterID, new { @class = "form-control" })
+                <div class="form-group">
+                    <label for="WriterName">Isim</label>
+                    @Html.TextBoxFor(x => x.WriterName, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="WriterSurname">Soyisim</label>
+                    @Html.TextBoxFor(x => x.WriterSurname, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="WriterMail">Mail adresi</label>
+                    @Html.TextBoxFor(x => x.WriterMail, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label for="Writerpassword">Password</label>
+                    @Html.PasswordFor(x => x.Writerpassword, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Yazar profil fotografi</label>
+                    <input type="file" name="WriterImage"/>
+                </div>
+                <div class="form-group">
+                    <label for="WriterAbout">Yazar hakkinda</label>
+                    @Html.TextAreaFor(x => x.WriterAbout, 10, 3, new { @class = "form-control" })
+                </div>
+                <button type="submit" class="btn btn-gradient-primary mr-2">Ekle</button>
+                <button class="btn btn-light">Iptal</button>
+            </div>
+        </div>
+    </div>
+</form>

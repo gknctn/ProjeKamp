@@ -1,0 +1,38 @@
+﻿@using EntitiyLayer.Concrete
+@model List<Message2>
+@{
+    ViewData["Title"] = "SendBox";
+    Layout = "~/Views/Shared/WriterLayot.cshtml";
+}
+
+<h1>Gonderdigim Mesajlar</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Gonderdigim kisi</th>
+        <th>Konu</th>
+        <th>Durum</th>
+        <th>Mesaji sil</th>
+        <th>Mesaj detayi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MessageID</td>
+            <td>@item.MessageReceiverUser.WriterName @item.MessageReceiverUser.WriterSurname</td>
+            <td>@item.MessageSubject</td>
+            @if (item.MessageStatus == true)
+            {
+                <td>Aktif</td>
+            }
+            else
+            {
+                <td>Pasif</td>
+            }
+            <th><a href="/Message/MessageDelete/@item.MessageID" class="btn btn-danger">Sil</a></th>
+            <th><a href="/Message/MessageDetail/@item.MessageID" class="btn btn-warning">Detay</a></th>
+
+
+        </tr>
+    }
+</table>

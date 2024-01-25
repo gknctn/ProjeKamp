@@ -9,11 +9,11 @@ namespace BusinessLayer.Abstract
 {
     public interface IGenericService<T> where T : class
     {
-        void Add(T t);
-        void Remove(T t);
-        void Update(T t);
-        List<T> GetListAll(Guid id);
-        T Get(Guid id);
+        void TAdd(T t);
+        void TDelete(T t);
+        void TUpdate(T t);
+        List<T> TGetList();
+        T TGetById(int id);
 
     }
 }

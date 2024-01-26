@@ -14,7 +14,7 @@ namespace Webproject.Controllers
 {
     public class WriterController : Controller
     {
-        WriterManager writerManager = new WriterManager(new EfWriterRepository());
+        UserManager userManager = new UserManager(new EfUserRepository());
 
         Context context = new Context();
         private readonly UserManager<AppUser> _userManager;
@@ -26,14 +26,6 @@ namespace Webproject.Controllers
 
         public IActionResult Index()
         {
-            var user = User.Identity.Name;
-            ViewBag.v = user;
-            Context context = new Context();
-            var writerName = context.Writers.Where(x => x.WriterMail == user).Select(y => y.WriterName).FirstOrDefault();
-            var writerSurname = context.Writers.Where(x => x.WriterMail == user).Select(y => y.WriterSurname).FirstOrDefault();
-            ViewBag.v2 = writerName;
-            ViewBag.v3 = writerSurname;
-
             return View();
         }
 
@@ -41,8 +33,8 @@ namespace Webproject.Controllers
         {
             Context context = new Context();
             var userName = User.Identity.Name;
-            var writerName = context.Writers.Where(x => x.WriterMail == userName).Select(y => y.WriterName).FirstOrDefault();
-            var writerSurname = context.Writers.Where(x => x.WriterMail == userName).Select(y => y.WriterSurname).FirstOrDefault();
+            var writerName = context.Users.Where(x => x.UserName == userName).Select(y => y.Name).FirstOrDefault();
+            var writerSurname = context.Users.Where(x => x.UserName == userName).Select(y => y.Surname).FirstOrDefault();
 
             SignedInUser SignedUser = new SignedInUser()
             {
@@ -64,7 +56,8 @@ namespace Webproject.Controllers
             var values =await _userManager.FindByNameAsync(User.Identity.Name);
             UserUpdateViewModel model = new UserUpdateViewModel();
             model.mail = values.Email;
-            model.namesurname = values.NameSurname;
+            model.name = values.Name;
+            model.surname = values.Surname;
             model.username = values.UserName;
             model.imageurl = values.ImageUrl;
             return View(model);
@@ -76,8 +69,10 @@ namespace Webproject.Controllers
             //var id = context.Users.Where(x => x.UserName == User.Identity.Name).Select(x => x.Id).FirstOrDefault();
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
 
-            values.NameSurname = model.namesurname;
+            values.Name = model.name;
+            values.Surname = model.surname;
             values.Email = model.mail;
+            values.About = model.about;
             values.ImageUrl = model.imageurl;
             values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.password);
 
@@ -95,7 +90,7 @@ namespace Webproject.Controllers
         [HttpPost]
         public IActionResult WriterAdd(AddProfileImage p)
         {
-            Writer writer = new Writer();
+            AppUser user= new AppUser();
             if (p.WriterImage != null)
             {
                 var extension = Path.GetExtension(p.WriterImage.FileName);
@@ -103,14 +98,14 @@ namespace Webproject.Controllers
                 var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImageFiles/", newImageName);
                 var stream = new FileStream(location, FileMode.Create);
                 p.WriterImage.CopyTo(stream);
-                writer.WriterImage = newImageName;
+                user.ImageUrl = newImageName;
             }
-            writer.WriterName = p.WriterName;
-            writer.WriterSurname = p.WriterSurname;
-            writer.WriterStatus = true;
-            writer.WriterMail = p.WriterMail;
-            writer.WriterAbout = p.WriterAbout;
-            writerManager.TAdd(writer);
+            user.Name= p.WriterName;
+            user.Surname= p.WriterSurname;
+            user.Status = true;
+            user.Email= p.WriterMail;
+            user.About= p.WriterAbout;
+            userManager.TAdd(user);
             return RedirectToAction("Index", "Dashboard");
         }
         

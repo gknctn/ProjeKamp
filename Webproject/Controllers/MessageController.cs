@@ -21,16 +21,14 @@ namespace Webproject.Controllers
         public IActionResult InBox()
         {
             var userName = User.Identity.Name;
-            var writerMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
-            var writerID = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterID).FirstOrDefault();
+            var writerID = context.Users.Where(x => x.UserName == userName).Select(y => y.Id).FirstOrDefault();
             var values = message2Manager.GetInboxListByWriter(writerID);
             return View(values);
         }
         public IActionResult SendBox()
         {
             var userName = User.Identity.Name;
-            var writerMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
-            var writerID = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterID).FirstOrDefault();
+            var writerID = context.Users.Where(x => x.UserName == userName).Select(y => y.Id).FirstOrDefault();
             var values = message2Manager.GetSendboxListByWriter(writerID);
             return View(values);
         }
@@ -54,13 +52,13 @@ namespace Webproject.Controllers
         public IActionResult SendMessage(Message2 p)
         {
             var userName = User.Identity.Name;
-            var writerMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
-            var SenderWriterID = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterID).FirstOrDefault();
-            //BURAYA ALICI ID SINI MAIL ADRESI UZERINDEN CEKEREK DINAMIK HALE GETIRECEGIM.
-            //var ReceiverWriterID = context.Writers.Where(x => x.WriterMail == writerMail).Select(y => y.WriterID).FirstOrDefault();
-            //MessageReceiverID
+            
+            var SenderWriterID = context.Users.Where(x => x.UserName == userName).Select(y => y.Id).FirstOrDefault();
+
+            var ReceiverWriterID = context.Users.Where(x => x.Email==p.MessageReceiverUser.Email).Select(y => y.Id).FirstOrDefault();
+
             p.MessageSenderID = SenderWriterID;
-            //p.MessageReceiverID = 2;
+            p.MessageReceiverID = ReceiverWriterID;
             p.MessageStatus = true;
             p.MessageDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             message2Manager.TAdd(p);

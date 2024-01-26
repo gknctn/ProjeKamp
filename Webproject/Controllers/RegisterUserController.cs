@@ -28,22 +28,18 @@ namespace Webproject.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(UserSignUpViewModel p)
         {
-            WriterManager writermanager = new WriterManager(new EfWriterRepository());
+            UserManager userManager = new UserManager(new EfUserRepository());
             if (ModelState.IsValid)
             {
-                Writer writer = new Writer();
-                writer.WriterName = p.NameSurname;
-                writer.WriterMail = p.Mail;
-                writer.WriterStatus = true;
-                writer.Writerpassword = p.Password;
-                writermanager.TAdd(writer);
                 AppUser user = new AppUser()
                 {
-                    UserName = p.UserName,
                     Email = p.Mail,
-                    NameSurname = p.NameSurname
+                    Name = p.Name,
+                    Surname = p.Surname,
+                    UserName = p.UserName
                 };
-                var result = await _userManager.CreateAsync(user, p.Password);
+                var result = await _userManager.CreateAsync(user,p.Password);
+
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "LoginUser");

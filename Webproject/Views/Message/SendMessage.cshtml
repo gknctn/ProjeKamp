@@ -9,7 +9,7 @@
 @using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
 {
     @Html.Label("Alici maili")
-    @Html.TextBoxFor(x => x.MessageReceiverID, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.MessageReceiverUser.Email, new { @class = "form-control" })
     <br />
 
     @Html.Label("Konu")

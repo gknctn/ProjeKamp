@@ -8,14 +8,14 @@ namespace Webproject.ViewComponents.Writer
 {
     public class WriterAboutOnDashboard : ViewComponent
     {
-        WriterManager writerManager = new WriterManager(new EfWriterRepository());
+        UserManager userManager = new UserManager(new EfUserRepository());
         Context context = new Context();
         public IViewComponentResult Invoke()
         {
             var userName = User.Identity.Name;
-            var userMail = context.Users.Where(x => x.UserName == userName).Select(y => y.Email).FirstOrDefault();
-            var writerID = context.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
-            var values = writerManager.GetWriterById(writerID);
+            var userID = context.Users.Where(x => x.UserName == userName).Select(y => y.Id).FirstOrDefault();
+            
+            var values = userManager.GetWriterById(userID);
             return View(values);
         }
     }

@@ -1,12 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 
 namespace Webproject.Models
 {
     public class UserSignUpViewModel
     {
-        [Display(Name ="Ad Soyad")]
+        [Display(Name ="Ad")]
         [Required(ErrorMessage ="Lutfen ad soyad giriniz.")]
-        public string NameSurname { get; set; }
+        public string Name { get; set; }
+
+        [Display(Name = "Soyad")]
+        [Required(ErrorMessage = "Lutfen ad soyad giriniz.")]
+        public string Surname { get; set; }
 
         [Display(Name = "Sifre")]
         [Required(ErrorMessage = "Lutfen Sifre giriniz.")]

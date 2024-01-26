@@ -14,18 +14,18 @@ namespace DataAccesLayer.Concrete
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=GOKHAN\\SQLEXPRESS;database=BlogDb;integrated security=true");
+            optionsBuilder.UseSqlServer("server=GOKHAN\\SQLEXPRESS;database=BlogSiteDb;integrated security=true");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Message2>()
                 .HasOne(x => x.MessageSenderUser)
-                .WithMany(y => y.WriterSender)
+                .WithMany(y => y.MessageSender)
                 .HasForeignKey(z => z.MessageSenderID)
                 .OnDelete(DeleteBehavior.ClientSetNull);
             modelBuilder.Entity<Message2>()
                 .HasOne(x => x.MessageReceiverUser)
-                .WithMany(y => y.WriterReceiver)
+                .WithMany(y => y.MessageReceiver)
                 .HasForeignKey(z => z.MessageReceiverID)
                 .OnDelete(DeleteBehavior.ClientSetNull);
             base.OnModelCreating(modelBuilder);
@@ -35,7 +35,6 @@ namespace DataAccesLayer.Concrete
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Writer> Writers { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<NewsLetter> NewsLetters { get; set; }
         public DbSet<BlogRayting> BlogRaytings { get; set; }

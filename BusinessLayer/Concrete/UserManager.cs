@@ -18,6 +18,10 @@ namespace BusinessLayer.Concrete
             _userdal = userdal;
         }
 
+        public List<AppUser> GetWriterById(int id)
+        {
+            return _userdal.GetListAll(x => x.Id == id);
+        }
         public void TAdd(AppUser t)
         {
             _userdal.Insert(t);

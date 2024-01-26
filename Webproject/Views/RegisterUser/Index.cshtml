@@ -38,8 +38,12 @@
             <p>Yeni bir hesap olusturun</p>
             <form class="m-t" role="form" asp-action="Index" method="post">
                 <div class="form-group">
-                    <span  asp-validation-for="@Model.NameSurname"></span>
-                    <input type="text" class="form-control" asp-for="@Model.NameSurname" placeholder="Adiniz soyadiniz">
+                    <span  asp-validation-for="@Model.Name"></span>
+                    <input type="text" class="form-control" asp-for="@Model.Name" placeholder="Adiniz">
+                </div>
+                <div class="form-group">
+                    <span asp-validation-for="@Model.Surname"></span>
+                    <input type="text" class="form-control" asp-for="@Model.Surname" placeholder="Soyadiniz">
                 </div>
 
                 <div class="form-group">

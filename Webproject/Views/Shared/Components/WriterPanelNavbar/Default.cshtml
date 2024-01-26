@@ -4,12 +4,12 @@
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                    <img src="~/writer/assets/images/faces/face1.jpg" alt="profile">
+                    <img src="@Model.ImageUrl" alt="profile">
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                    <span class="font-weight-bold mb-2">@Model.NameSurname</span>
+                    <span class="font-weight-bold mb-2">@Model.Name @Model.Surname</span>
                     <span class="font-weight-bold mb-2">@Model.UserName</span>
                     <span class="text-secondary text-small">Project Manager</span>
                 </div>
@@ -71,7 +71,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" asp-action="LogOut" asp-controller="Login">
+            <a class="nav-link" asp-action="LogOut" asp-controller="LoginUser">
                 <span class="menu-title">Cikis Yap</span>
                 <i class="mdi menu-icon mdi-logout"></i>
             </a>

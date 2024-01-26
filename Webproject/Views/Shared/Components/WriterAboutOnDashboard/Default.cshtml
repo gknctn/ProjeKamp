@@ -1,5 +1,5 @@
 ﻿@using EntitiyLayer.Concrete
-@model List<Writer>
+@model List<AppUser>
 
 <div class="row">
     <div class="col-12 grid-margin stretch-card">
@@ -10,10 +10,10 @@
 
                     @foreach (var item in Model)
                     {
-                        <img src="@item.WriterImage" class="img-sm rounded-circle mr-3" alt="image">
+                        <img src="@item.ImageUrl" class="img-sm rounded-circle mr-3" alt="image">
                         <div class="mb-0 flex-grow">
-                            <h5 class="mr-2 mb-2">@item.WriterName - @item.WriterMail</h5>
-                            <p class="mb-0 font-weight-light">@item.WriterAbout</p>
+                            <h5 class="mr-2 mb-2">@item.Name @item.Surname - @item.Email</h5>
+                            <p class="mb-0 font-weight-light">@item.About</p>
                         </div>
                         <div class="ml-auto">
                             <i class="mdi mdi-heart-outline text-muted"></i>

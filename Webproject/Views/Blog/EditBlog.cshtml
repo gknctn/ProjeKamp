@@ -23,8 +23,8 @@
     @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
 
     @Html.Label("Blog Icerigi")
-    @Html.TextAreaFor(x => x.BlogContent, new { @class = "form-control" })
-    <br/>
+    @Html.TextAreaFor(x => x.BlogContent, 10, 3, new { @class = "form-control" })
+    <br />
     <button class="btn btn-success">
         Guncelle
     </button>

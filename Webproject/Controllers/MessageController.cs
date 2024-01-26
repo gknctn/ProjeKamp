@@ -5,6 +5,7 @@ using EntitiyLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using Webproject.Models;
 
 namespace Webproject.Controllers
 {
@@ -49,19 +50,22 @@ namespace Webproject.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult SendMessage(Message2 p)
+        public IActionResult SendMessage(SendMessageModel p)
         {
+            Message2 message = new Message2();
             var userName = User.Identity.Name;
-            
+
             var SenderWriterID = context.Users.Where(x => x.UserName == userName).Select(y => y.Id).FirstOrDefault();
 
-            var ReceiverWriterID = context.Users.Where(x => x.Email==p.MessageReceiverUser.Email).Select(y => y.Id).FirstOrDefault();
+            var ReceiverWriterID = context.Users.Where(x => x.Email == p.ReceiverMail).Select(y => y.Id).FirstOrDefault();
 
-            p.MessageSenderID = SenderWriterID;
-            p.MessageReceiverID = ReceiverWriterID;
-            p.MessageStatus = true;
-            p.MessageDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-            message2Manager.TAdd(p);
+            message.MessageSenderID = SenderWriterID;
+            message.MessageReceiverID = ReceiverWriterID;
+            message.MessageStatus = true;
+            message.MessageSubject = p.Subject;
+            message.MessageDetail = p.Message;
+            message.MessageDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            message2Manager.TAdd(message);
             return RedirectToAction("InBox");
         }
     }

@@ -1,4 +1,4 @@
-﻿@model EntitiyLayer.Concrete.Message2
+﻿@model SendMessageModel
 @{
     ViewData["Title"] = "SendMessage";
     Layout = "~/Views/Shared/WriterLayot.cshtml";
@@ -9,17 +9,17 @@
 @using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
 {
     @Html.Label("Alici maili")
-    @Html.TextBoxFor(x => x.MessageReceiverUser.Email, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.ReceiverMail, new { @class = "form-control" })
     <br />
 
     @Html.Label("Konu")
-    @Html.TextBoxFor(x => x.MessageSubject, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.MessageSubject)
+    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Subject)
     <br />
     
     @Html.Label("Mesaj")
-    @Html.TextAreaFor(x => x.MessageDetail,3,10, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.MessageDetail)
+    @Html.TextAreaFor(x => x.Message,3,10, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Message)
     <br />
     <button class="btn btn-info">
         Blogu Kaydet

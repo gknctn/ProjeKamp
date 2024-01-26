@@ -20,10 +20,10 @@
 
     <br />
     @Html.Label("Blog Kategori")
-    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.cv, new {@class="form-control"})
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
     <br />
     @Html.Label("Blog Icerigi")
-    @Html.TextBoxFor(x => x.BlogContent, new { @class = "form-control" })
+    @Html.TextAreaFor(x => x.BlogContent, 10, 3, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.BlogContent)
     <br />
     <button class="btn btn-info">

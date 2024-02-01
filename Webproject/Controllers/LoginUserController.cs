@@ -33,7 +33,7 @@ namespace Webproject.Controllers
                 var result = await _signInManager.PasswordSignInAsync(p.UserName, p.Password, false, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Dashboard");
+                    return RedirectToAction("index", "Homepage");
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace Webproject.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("index","Homepage");
         }
     }
 }

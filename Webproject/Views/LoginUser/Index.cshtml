@@ -1,66 +1,40 @@
 ﻿@model UserSignInViewModel
 
 @{
-    ViewData["Title"] = "Login";
-    Layout = "~/Views/Shared/UserLayout.cshtml";
+    ViewData["Title"] = "Giris yap";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
 }
 
-
-<!DOCTYPE html>
-<html>
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>WebBlog| Giris yap</title>
-
-    <link href="~/inspinia-gh-pages/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/inspinia-gh-pages/font-awesome/css/font-awesome.css" rel="stylesheet">
-
-    <link href="~/inspinia-gh-pages/css/animate.css" rel="stylesheet">
-    <link href="~/inspinia-gh-pages/css/style.css" rel="stylesheet">
-
-</head>
-
-<body class="gray-bg">
-
-    <div class="middle-box text-center loginscreen animated fadeInDown">
+<div class="text-center mt-2 mb-5 border border-2 rounded">
+    <div>
         <div>
-            <div>
-
-                <h1 class="logo-name">IN+</h1>
-
-            </div>
-            <h3>Blogumuza Hosgeldiniz</h3>
-            <p>
-                Blogumuzda bulunan yuzlerce bloga erismek icin giris yapiniz.
-                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
-            </p>
-            <p>Giris yap</p>
-            <form class="m-t" method="post">
-                <div class="form-group"> 
-                    <input type="text" class="form-control" asp-for="@Model.UserName" placeholder="Kullanici adi" required="">
-                </div>
-                <div class="form-group">
-                    <input type="password" asp-for="@Model.Password" class="form-control" placeholder="Sifre" required="">
-                </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
-
-                <a href="#"><small>Sifremi unuttum.</small></a>
-                <p class="text-muted text-center"><small>Hesabiniz var mi?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="/RegisterUser/Index/">Kayit ol</a>
-            </form>
-            <p class="m-t"> <small>Asp.Net Core Proje; @DateTime.UtcNow</small> </p>
+            <h1 class="logo-name mt-5">IN+</h1>
         </div>
+        <div class="mt-5">
+            <h3>Blogumuza Hosgeldiniz</h3>
+        </div>
+        <p>
+            Blogumuzda bulunan yuzlerce bloga erismek icin giris yapiniz.
+            <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+        </p>
+        <div class="border border-5 w-50 m-auto">
+        <div class="mt-5">
+            <h4>Giris yap</h4>
+        </div>
+        <form class="mt-5" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control w-50 m-auto" asp-for="@Model.UserName" placeholder="Kullanici adi" required="">
+            </div>
+            <div class="form-group mt-4">
+                <input type="password" class="form-control w-50 m-auto" asp-for="@Model.Password" placeholder="Sifre" required="">
+            </div>
+            <button type="submit" class="btn btn-primary block full-width mt-5 mb-5">Login</button>
+
+            <p class="text-muted text-center mt-5"><small>Hesabiniz var mi?</small></p>
+
+            <a class="btn btn-sm btn-white btn-block mt-5" href="/RegisterUser/Index/">Kayit ol</a>
+        </form>
+        </div>
+        <p class="mb-5"> <small>Asp.Net Core Proje; @DateTime.UtcNow</small> </p>
     </div>
-
-    <!-- Mainly scripts -->
-    <script src="~/inspinia-gh-pages/js/jquery-3.1.1.min.js"></script>
-    <script src="~/inspinia-gh-pages/js/popper.min.js"></script>
-    <script src="~/inspinia-gh-pages/js/bootstrap.js"></script>
-
-</body>
-
-</html>
+</div>

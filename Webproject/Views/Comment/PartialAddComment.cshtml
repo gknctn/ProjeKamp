@@ -1,17 +1,17 @@
-﻿<div class="comment-top">
-    <h4>Bir yorum yapın</h4>
+﻿<div class="comment-top mt-5">
+    <h3>Bir yorum yapın</h3>
 
-    <div class="comment-bottom">
+    <div class="comment-bottom mt-4">
         <form method="post" asp-action="PartialAddComment" asp-controller="Comment">
             <input class="form-control" type="text" id="blogid" placeholder="Adınız soyadınız" value="@ViewBag.Id" name="BlogId" hidden>
 
-            <input class="form-control" type="text" id="namesurname" placeholder="Adınız soyadınız" name="CommentUserName" required="">
+            <input class="form-control mt-3" type="text" id="namesurname" placeholder="Adınız soyadınız" name="CommentUserName" required="">
 
-            <input class="form-control" type="text" id="subject" placeholder="Konu" name="CommentTitle" required="">
+            <input class="form-control  mt-3" type="text" id="subject" placeholder="Konu" name="CommentTitle" required="">
 
-            <textarea class="form-control" type="text" id="comment" placeholder="Yorumunuz..." rows="5" name="CommentContent" required=""></textarea>
+            <textarea class="form-control  mt-3" type="text" id="comment" placeholder="Yorumunuz..." rows="5" name="CommentContent" required=""></textarea>
 
-            <button type="submit" id="btnAddComment" class="btn btn-primary submit">Yorum yap</button>
+            <button type="submit" id="btnAddComment" class="btn btn-primary mt-4 submit">Yorum yap</button>
         </form>
     </div>
 </div>

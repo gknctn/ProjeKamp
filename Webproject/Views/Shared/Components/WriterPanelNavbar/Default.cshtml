@@ -1,10 +1,18 @@
-﻿@model EntitiyLayer.Concrete.AppUser 
+﻿@model EntitiyLayer.Concrete.AppUser
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                    <img src="@Model.ImageUrl" alt="profile">
+                    @if (Model.ImageUrl == null)
+                    {
+                        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="image">
+                    }
+                    else
+                    {
+                        <img src="@Model.ImageUrl" alt="profile">
+
+                    }
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>

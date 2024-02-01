@@ -25,11 +25,17 @@ namespace Webproject.Controllers
             return View(values);
         }
         [AllowAnonymous]
+        public IActionResult Test()
+        {
+            return View();
+        }
+        [AllowAnonymous]
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.Id = id;
             ViewBag.CommentCount = context.Comments.Where(x=>x.BlogID==id).Select(y=>y.CommentId).Count();
-
+            var CategoryID = context.Blogs.Where(x=>x.BlogID==id).Select(y=>y.CategoryID).FirstOrDefault();
+            ViewBag.CategoryName=context.Categories.Where(x=>x.CategoryID== CategoryID).Select(y=>y.CategoryName).FirstOrDefault();
             var values = blogManager.GetBlogByID(id);
             return View(values);
         }

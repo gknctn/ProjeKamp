@@ -8,17 +8,17 @@
         <div class="blog-grids row mb-3">
             <div class="col-md-5 blog-grid-left">
                 <a href="single.html">
-                    <img src="~/CoreBlogTema/images/1.jpg" class="img-fluid" alt="">
+                    <img src="@item.BlogImage" class="img-fluid" alt="">
                 </a>
             </div>
             <div class="col-md-7 blog-grid-right">
 
                 <h5>
-                    <a href="single.html">Pellentesque dui, non felis. Maecenas male non felis </a>
+                    <a href="/Blog/BlogReadAll/@item.BlogID">@item.BlogName</a>
                 </h5>
                 <div class="sub-meta">
                     <span>
-                        <i class="far fa-clock"></i> 20 Jan, 2018
+                        <i class="far fa-clock"></i> @item.BlogCreateDate.ToShortDateString()
                     </span>
                 </div>
             </div>

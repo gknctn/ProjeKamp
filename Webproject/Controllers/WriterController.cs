@@ -60,6 +60,7 @@ namespace Webproject.Controllers
             model.surname = values.Surname;
             model.username = values.UserName;
             model.imageurl = values.ImageUrl;
+            model.about = values.About;
             return View(model);
         }
 

@@ -1,0 +1,61 @@
+﻿@using EntitiyLayer.Concrete
+@model List<Message2>
+@{
+    ViewData["Title"] = "Gelen Kutusu";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="row">
+    @await Html.PartialAsync("~/Areas/Admin/Views/AdminMessage/MessageAreaLeftBar.cshtml")
+    <div class="col-lg-9 animated fadeInRight">
+        <div class="mail-box-header">
+
+            <form method="get" action="index.html" class="float-right mail-search">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" name="search" placeholder="Mail ara">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            Ara
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <h2>
+                Gelen kutusu (@Model.Count)
+            </h2>
+            <div class="mail-tools tooltip-demo m-t-md">
+                <div class="btn-group float-right">
+                    <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                    <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                </div>
+                <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Yenile"><i class="fa fa-refresh"></i> Refresh</button>
+                <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Okundu olarak isaretle"><i class="fa fa-eye"></i> </button>
+                <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Onemli olarak isaretle"><i class="fa fa-exclamation"></i> </button>
+                <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Cop kutusuna tasi"><i class="fa fa-trash-o"></i> </button>
+            </div>
+        </div>
+        <div class="mail-box">
+
+            <table class="table table-hover table-mail">
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr class="unread">
+                            <td class="check-mail">
+                                <input type="checkbox" class="i-checks" checked>
+                            </td>
+                            <td class="mail-ontact"><a href="/Admin/AdminMessage/MessageDetail/@item.MessageID">@item.MessageSenderUser.UserName</a></td>
+                            <td class="mail-subject"><a href="/Admin/AdminMessage/MessageDetail/@item.MessageID">@item.MessageSubject</a></td>
+                            <td class=""></td>
+                            <td class="text-right mail-date">@item.MessageDate</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+</div>

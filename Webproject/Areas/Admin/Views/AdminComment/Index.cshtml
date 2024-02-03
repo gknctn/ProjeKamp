@@ -1,0 +1,37 @@
+﻿@using EntitiyLayer.Concrete
+@model List<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Comment</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Kullanici adi</th>
+            <th scope="col">Yorum basligi</th>
+            <th scope="col">Yorum</th>
+            <th scope="col">Durum</th>
+            <th scope="col">Tarih</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.CommentId</th>
+                <td>@item.CommentUserName</td>
+                <td>@item.CommentTitle</td>
+                <td>@item.CommentContent</td>
+                <td>@item.CommentStatus</td>
+                <td>@item.CommentDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

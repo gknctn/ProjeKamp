@@ -25,7 +25,7 @@ namespace Webproject.Controllers
         {
             p.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             p.CommentStatus = true;
-            commentManager.CommentAdd(p);
+            commentManager.TAdd(p);
             return PartialView();
         }
     }

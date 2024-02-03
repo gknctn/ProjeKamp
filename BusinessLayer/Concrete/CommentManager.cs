@@ -15,39 +15,34 @@ namespace BusinessLayer.Concrete
             _commentdal = commentdal;
         }
 
-        public void CommentAdd(Comment comment)
-        {
-            _commentdal.Insert(comment);
-        }
-
         public List<Comment> GetListAll(int id)
         {
             return _commentdal.GetListAll(x => x.BlogID == id);
         }
 
-        public void TAdd(Blog t)
+        public void TAdd(Comment t)
         {
-            throw new NotImplementedException();
+            _commentdal.Insert(t);
         }
 
-        public void TDelete(Blog t)
+        public void TDelete(Comment t)
         {
-            throw new NotImplementedException();
+            _commentdal.Delete(t);
         }
 
-        public Blog TGetById(int id)
+        public Comment TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _commentdal.getById(id);
         }
 
-        public List<Blog> TGetList()
+        public List<Comment> TGetList()
         {
-            throw new NotImplementedException();
+            return _commentdal.GetListAll();
         }
 
-        public void TUpdate(Blog t)
+        public void TUpdate(Comment t)
         {
-            throw new NotImplementedException();
+            _commentdal.Update(t);
         }
     }
 }

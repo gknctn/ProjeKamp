@@ -16,11 +16,12 @@ namespace BusinessLayer.Concrete
 		{
 			_blogDal = blogDal;
 		}
+
         public List<Blog> GetBlogListWithCategory()
         {
             return _blogDal.GetWithCategory();
         }
-        public List<Blog> GetBlogListWithCategoryAndCat()
+        public List<Blog> GetBlogListWithCategoryAndWriter()
         {
             return _blogDal.GetListWithWriterAndCategory();
         }

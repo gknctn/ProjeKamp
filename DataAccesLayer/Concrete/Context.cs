@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.Concrete
 {
-    public class Context : IdentityDbContext<AppUser,AppRole,int>
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=GOKHAN\\SQLEXPRESS;database=BlogSiteDb;integrated security=true");
+            optionsBuilder.EnableSensitiveDataLogging();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

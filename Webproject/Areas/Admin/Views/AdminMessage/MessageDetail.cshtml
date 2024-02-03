@@ -1,0 +1,73 @@
+﻿@model EntitiyLayer.Concrete.Message2
+@{
+    ViewData["Title"] = "Mesaj detayi";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+<div class="row">
+
+    @await Html.PartialAsync("~/Areas/Admin/Views/AdminMessage/MessageAreaLeftBar.cshtml")
+
+    <div class="col-lg-9 animated fadeInRight">
+        <div class="mail-box-header">
+            <div class="float-right tooltip-demo">
+                <a href="mail_compose.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a>
+                <a href="#" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i> </a>
+                <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>
+            </div>
+            <h2>
+                Mesaj
+            </h2>
+            <div class="mail-tools tooltip-demo m-t-md">
+
+
+                <h3>
+                    <span class="font-normal">Konu: </span>@Model.MessageSubject
+                </h3>
+                <h5>
+                    <span class="float-right font-normal">@Model.MessageDate</span>
+                    <span class="font-normal">Kimden: </span>@Model.MessageSenderUser.Email
+                </h5>
+            </div>
+        </div>
+        <div class="mail-box">
+
+
+            <div class="mail-body">
+                <p>
+                    @Model.MessageDetail
+                </p>
+
+            </div>
+
+
+            <div class="clearfix"></div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+
+<!-- iCheck -->
+<script src="js/plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+</script>
+
+
+

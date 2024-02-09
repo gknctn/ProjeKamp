@@ -14,26 +14,26 @@
     else
     {
         <div class="row">
-            <div class="page-header">
+            <div class="page-header col-12">
                 <h3><small class="pull-right">@Model.Count() Yorum</small>  </h3>
             </div>
-            <div class="comments-list">
-                @foreach (var item in Model)
-                {
-                   
-                    if (item.CommentStatus==true)
+            <div class="comments-list col-12">
+                <form>
+                    @foreach (var item in Model)
                     {
                         <div class="card mt-2" style="width: 100%;">
                             <div class="card-body">
                                 <h5 class="card-title">Yorum sahibi : @item.CommentUserName</h5>
                                 <p class="card-text border-top"><h5>Yorum:</h5>@item.CommentContent</p>
+                                <input type="checkbox" class="CommentStatus"/>
+
                             </div>
                         </div>
+
                     }
-                }
+                </form>
             </div>
         </div>
-
-        
     }
 </div>
+

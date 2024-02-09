@@ -7,6 +7,7 @@ using DataAccesLayer.EntityFramework;
 using EntitiyLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Webproject.Areas.Admin.Models;
 
 namespace Webproject.Areas.Admin.Controllers
 {
@@ -15,6 +16,8 @@ namespace Webproject.Areas.Admin.Controllers
     {
         BlogManager blogManager = new BlogManager(new EfBlogRepository());
         CategoryManager categoryManager = new CategoryManager(new EfCategoryRepository());
+        CommentManager commentManager = new CommentManager(new EfCommentRepository());
+
         Context context = new Context();
         public IActionResult Index()
         {
@@ -24,7 +27,14 @@ namespace Webproject.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult BlogEdit(int id)
         {
-            var value = blogManager.TGetById(id);
+            ViewBag.Id = id;
+            BlogAndCommentModel blogAndCommentModel = new BlogAndCommentModel();
+            var CommentValues = commentManager.GetListAll(id);
+            var BlogValue = blogManager.TGetById(id);
+
+            blogAndCommentModel.blog = BlogValue;
+            blogAndCommentModel.comments = CommentValues;
+
             List<SelectListItem> categoryValues = (from x in categoryManager.TGetList()
                                                    select new SelectListItem
                                                    {
@@ -32,18 +42,18 @@ namespace Webproject.Areas.Admin.Controllers
                                                        Value = x.CategoryID.ToString(),
                                                    }).ToList();
             ViewBag.cv = categoryValues;
-            return View(value);
+            return View(blogAndCommentModel);
         }
 
         [HttpPost]
-        public IActionResult BlogEdit(Blog p)
+        public IActionResult BlogEdit(BlogAndCommentModel p)
         {
             var userName = User.Identity.Name;
             var writerID = context.Users.Where(x => x.UserName == userName).Select(y => y.Id).FirstOrDefault();
 
-            p.WriterID = writerID;
-            p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-            blogManager.TUpdate(p);
+            p.blog.WriterID = writerID;
+            p.blog.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            blogManager.TUpdate(p.blog);
             return RedirectToAction("Index");
         }
     }

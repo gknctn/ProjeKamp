@@ -1,5 +1,6 @@
-﻿@using EntitiyLayer.Concrete
-@model List<Comment>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<EntitiyLayer.Concrete.Comment>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
@@ -13,10 +14,12 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Kullanici adi</th>
+            <th scope="col">Blogun adi</th>
             <th scope="col">Yorum basligi</th>
             <th scope="col">Yorum</th>
             <th scope="col">Durum</th>
             <th scope="col">Tarih</th>
+            <th scope="col">Duzenle</th>
         </tr>
     </thead>
     <tbody>
@@ -25,13 +28,18 @@
             <tr>
                 <th>@item.CommentId</th>
                 <td>@item.CommentUserName</td>
+                <td>@item.Blog.BlogName</td>
                 <td>@item.CommentTitle</td>
                 <td>@item.CommentContent</td>
                 <td>@item.CommentStatus</td>
                 <td>@item.CommentDate.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-primary" href="/Admin/AdminComment/CommentEdit/@item.CommentId">Yorumu duzenle</a>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
 
 

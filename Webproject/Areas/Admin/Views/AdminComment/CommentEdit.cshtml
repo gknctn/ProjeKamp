@@ -1,0 +1,30 @@
+﻿@model Webproject.Areas.Admin.Models.BlogAndCommentModel
+@{
+    ViewData["Title"] = "CommentEdit";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("CommentEdit", "AdminComment", FormMethod.Post))
+{
+    @Html.Label("Kullanici adi")
+    @Html.TextBoxFor(x => x.comment.CommentUserName, new { @class = "form-control" })
+    
+    @Html.Label("Yorum basligi")
+    @Html.TextBoxFor(x => x.comment.CommentTitle, new { @class = "form-control" })
+
+    @Html.Label("Yorum")
+    @Html.TextBoxFor(x => x.comment.CommentContent, new { @class = "form-control" })
+
+    @Html.Label("Yayinlansin mi")
+    @Html.CheckBoxFor(x => x.comment.CommentStatus, new { @class = "form-control mb-4", style = "width:20px" })
+    
+    @Html.HiddenFor(x => x.comment.CommentId, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.comment.CommentDate, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.comment.BlogID, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.comment.BlogScore, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.comment.Blog, new { @class = "form-control" })
+
+    <button class="btn btn-success">
+        Guncelle
+    </button>
+}

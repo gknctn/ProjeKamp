@@ -1,4 +1,5 @@
-﻿@model EntitiyLayer.Concrete.Blog
+﻿@model Webproject.Areas.Admin.Models.BlogAndCommentModel
+
 @{
     ViewData["Title"] = "BlogEdit";
     Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
@@ -7,27 +8,60 @@
 @using (Html.BeginForm("BlogEdit", "AdminBlog", FormMethod.Post))
 {
     @Html.Label("Blog ID")
-    @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.blog.BlogID, new { @class = "form-control" })
 
     @Html.Label("Blog Basligi")
-    @Html.TextBoxFor(x => x.BlogName, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.blog.BlogName, new { @class = "form-control" })
 
     @Html.Label("Blog Kategori")
-    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.blog.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
 
     @Html.Label("Blog Thumbnail")
-    @Html.TextBoxFor(x => x.BlogThumbnailImage, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.blog.BlogThumbnailImage, new { @class = "form-control" })
 
     @Html.Label("Blog Resmi")
-    @Html.TextBoxFor(x => x.BlogImage, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.blog.BlogImage, new { @class = "form-control" })
 
     @Html.Label("Yayinlansin mi")
-    @Html.CheckBoxFor(x => x.BlogStatus, new { @class = "form-control", style = "width:20px" })
+    @Html.CheckBoxFor(x => x.blog.BlogStatus, new { @class = "form-control mb-3", style = "width:20px" })
 
     @Html.Label("Blog Icerigi")
-    @Html.TextAreaFor(x => x.BlogContent, 10, 3, new { @class = "form-control"})
+    @Html.TextAreaFor(x => x.blog.BlogContent, 10, 3, new { @class = "form-control" })
     <br />
     <button class="btn btn-success">
         Guncelle
     </button>
 }
+<div class="mt-5 row">
+    <h2>Yorumlar</h2>
+    @if (Model.comments.Count() == 0)
+    {
+        <div class="border-bottom border-top col-12">
+            <div class="media-body mt-4 mb-5">
+                <h3>Yorum yok</h3>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-12">
+            <div class="page-header">
+                <h3><small>@Model.comments.Count() Yorum</small></h3>
+            </div>
+            <div class="comments-list">
+                @foreach (var item in Model.comments)
+                {
+                    <div class="card mt-2" style="width: 100%;">
+                        <div class="card-body">
+                            <h5 class="card-title">Yorum sahibi : @item.CommentUserName</h5>
+                            <p class="card-text border-top"><h5>Yorum:</h5>@item.CommentContent</p>
+                        </div>
+                        <a class="btn btn-primary" href="/Admin/AdminComment/CommentEdit/@item.CommentId">Yorumu duzenle</a>
+                    </div>
+
+                }
+            </div>
+        </div>
+    }
+</div>
+

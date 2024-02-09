@@ -1,14 +1,15 @@
-
 using DataAccesLayer.Concrete;
 using EntitiyLayer.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Webproject
 {
@@ -45,7 +46,16 @@ namespace Webproject
             {
                 x.LoginPath = "/Login/Index";
             });
+            services.ConfigureApplicationCookie(option =>
+            {
+                option.Cookie.HttpOnly = true;
+                option.ExpireTimeSpan=TimeSpan.FromMinutes(100);
+                option.AccessDeniedPath = new PathString("/LoginUser/AccesDanied/");
+                option.LoginPath = "/Login/Index/";
+                option.SlidingExpiration = true;
+            });
         }
+        
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

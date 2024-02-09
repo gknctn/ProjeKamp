@@ -47,5 +47,9 @@ namespace Webproject.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("index","Homepage");
         }
+        public IActionResult AccesDanied()
+        {
+            return View();
+        }
     }
 }
